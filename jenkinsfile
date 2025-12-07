@@ -20,11 +20,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'npm run build'   
+                bat 'npm run build'
             }
         }
 
-        stage('Install Firebase CLI') {
+        stage('Install Firebase CLI (optional)') {
             steps {
                 bat 'npm install -g firebase-tools'
             }
@@ -32,7 +32,7 @@ pipeline {
 
         stage('Deploy to Firebase Hosting') {
             steps {
-                bat 'firebase deploy --only hosting --non-interactive'
+                bat 'npx firebase-tools deploy --only hosting --non-interactive'
             }
         }
     }
